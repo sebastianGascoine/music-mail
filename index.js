@@ -17,7 +17,6 @@ const mlist = require('./mlist');
  (___/   (___/ /   / (_      / /  / (___  (__) (__)     |/ |/  /   (_   /   / o
 
 */
-
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -35,12 +34,12 @@ const transporter = nodemailer.createTransport({
 
 async function send() {
   let ytlink = '';
-  let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com';
+  let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com'; //replace with db
     const result = await transporter.sendMail({
         from: 'mylesfour20',
-        to: 'sebgascoine@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
+        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, parkat701@gmail.com', //sovietangel5@gmail.com', //sovietangel5 is swag
         subject: "Sebastian's Music of The Day",
-        html: '<h1>This is actually works lets go</h1><p>youtube link https://youtu.be/AV35kLG0Qas</p><br><p>spreadsheet link <p>youtube link https://youtu.be/AV35kLG0Qas</p></p>'
+        html: '<h1>This is actually works lets go</h1><p>youtube link https://youtu.be/AV35kLG0Qas</p><br><p>spreadsheet link</p>'
     });
 
     console.log(JSON.stringify(result, null, 4));
