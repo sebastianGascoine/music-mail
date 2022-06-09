@@ -1,4 +1,5 @@
 const express = require('express');
+const smime = require('nodemailer-smime'); //smime encryp $$$
 let path = require("path");
 const app = express();
 var nodemailer = require('nodemailer');
@@ -7,6 +8,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+const mlist = require('./mlist');
+
 /*                                                                                /
         /                                                         ,        /     /
     __ /    __    __  _/_      _  _    __   __   __                 _/_   /__   /
@@ -14,6 +17,7 @@ app.use(bodyParser.json());
  (___/   (___/ /   / (_      / /  / (___  (__) (__)     |/ |/  /   (_   /   / o
 
 */
+
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -36,7 +40,7 @@ async function send() {
         from: 'mylesfour20',
         to: 'sebgascoine@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
         subject: "Sebastian's Music of The Day",
-        html: '<h1>This is actually works lets go</h1><p>youtube link https://youtu.be/AV35kLG0Qas</p>'
+        html: '<h1>This is actually works lets go</h1><p>youtube link https://youtu.be/AV35kLG0Qas</p><br><p>spreadsheet link <p>youtube link https://youtu.be/AV35kLG0Qas</p></p>'
     });
 
     console.log(JSON.stringify(result, null, 4));
@@ -55,25 +59,3 @@ app.get("/request", function(req, res){
 app.listen(3000,function() {
   console.log("started on port 3000");
 });
-
-//YEE old code
-/*
-var transporter = nodemailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
-  auth: {
-    user: email + '@gmail.com',
-    pass: passw
-  }
-});
-
-var mailOptions = {
-  from: email + '@gmail.com',
-  to: 'sebgascoine@gmail.com',
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-//  text: 'That was easy!\nHere is a second line.'
-//  html: '<h1>Welcome</h1><p>That was easy!</p>'
-};
-*/
