@@ -1,0 +1,13 @@
+{
+  "name": "sendemail",
+  "version": "1.0.0",
+  "description": "Send an email",
+  "main": "index.js",
+  "author": "Mr. Yee",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.7.5",
+    "path": "^0.12.7"
+  }
+}
