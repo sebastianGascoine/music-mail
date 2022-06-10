@@ -4,6 +4,7 @@ let path = require("path");
 const app = express();
 var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser');
+const router = express.Router();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -47,11 +48,13 @@ async function send() {
 
 
 
-app.get("/",function(req,res) {
+router.get("/",function(req,res) {
   res.sendFile(path.resolve(__dirname,"index.html"));
 });
-
-app.get("/request", function(req, res){
+router.get("/daily",function(req,res) {
+  res.sendFile(path.resolve(__dirname,"/public/views/emaildaily.html"));
+});
+router.get("/request", function(req, res){
     send();
 });
 
