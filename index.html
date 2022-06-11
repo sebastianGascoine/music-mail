@@ -21,13 +21,22 @@
       function success(result) {
       }
 
-      function requestClicked(){
+      function requestClicked1(){
 //send an HTTP get request and get a result back.
         $.get("/request", success);
       }
-
+/*
+      function requestClicked2(){
+      //send an HTTP get request and get a result back.
+        $.get("/request", success);
+      }
+      function requestClicked3(){
+//send an HTTP get request and get a result back.
+        $.get("/request", success);
+      }
+*/
       $(document).ready(function(){
-        $("#requestButton").click(requestClicked);
+        $("#requestButton1").click(requestClicked1);
       });
 
 

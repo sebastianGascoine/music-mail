@@ -2,62 +2,25 @@ const express = require('express');
 const smime = require('nodemailer-smime'); //smime encryp $$$
 let path = require("path");
 const app = express();
-var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const http = require('http');
+const shared = require('./shared');
+const routes = require('./routes');
+
 const router = express.Router();
 
-app.use(bodyParser.urlencoded({extended: true}));
+mongoose.connect('mongodb://127.0.0.1:27017/Music-Mail');
+
+const server = http.createServer(app);
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use('/', express.static('./public'));
+app.use(routes);
 
-const mlist = require('./mlist');
+const port = 3000;
+app.set('port', process.env.PORT || port);
 
-/*                                                                                /
-        /                                                         ,        /     /
-    __ /    __    __  _/_      _  _    __   __   __                 _/_   /__   /
-  /   /   /   ) /   ) /       / /  ) /___) (_ ` (_ `    | /| /  /   /    /   ) /
- (___/   (___/ /   / (_      / /  / (___  (__) (__)     |/ |/  /   (_   /   / o
-
-*/
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'mylesfour20',
-        pass: 'ctmyboahcqixociq'
-    }
-});
-/*                                                                                /
-        /                                                         ,        /     /
-    __ /    __    __  _/_      _  _    __   __   __                 _/_   /__   /
-  /   /   /   ) /   ) /       / /  ) /___) (_ ` (_ `    | /| /  /   /    /   ) /
- (___/   (___/ /   / (_      / /  / (___  (__) (__)     |/ |/  /   (_   /   / o
-
-*/
-
-async function send() {
-  let ytlink = '';
-  let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com'; //replace with db
-    const result = await transporter.sendMail({
-        from: 'mylesfour20',
-        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, parkat701@gmail.com', //sovietangel5@gmail.com', //sovietangel5 is swag
-        subject: "Sebastian's Music of The Day",
-        html: '<h1>This is actually works lets go</h1><p>youtube link https://youtu.be/AV35kLG0Qas</p><br><p>spreadsheet link</p>'
-    });
-
-    console.log(JSON.stringify(result, null, 4));
-}
-
-
-
-router.get("/",function(req,res) {
-  res.sendFile(path.resolve(__dirname,"index.html"));
-});
-router.get("/daily",function(req,res) {
-  res.sendFile(path.resolve(__dirname,"/public/views/emaildaily.html"));
-});
-router.get("/request", function(req, res){
-    send();
-});
-
-app.listen(3000,function() {
-  console.log("started on port 3000");
-});
+server.listen(port);
+console.log('Hosted on port ' + port);
