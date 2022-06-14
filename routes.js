@@ -36,7 +36,13 @@ router.get("/",function(req,res) {
 router.get("/daily",function(req,res) {
   res.sendFile(path.resolve(__dirname,"/public/views/emaildaily.html"));
 });
+router.get('/login', function (req, res) {
+    res.sendFile(path.resolve(__dirname + '/public/setup/login.html'));
+});
 
+router.get('/signup', function (req, res) {
+    res.sendFile(path.resolve(__dirname + '/public/setup/signup.html'));
+});
 
 async function send() {
   let ytlink = '';
@@ -51,7 +57,7 @@ async function send() {
     console.log(JSON.stringify(result, null, 4));
 }
 
-router.get("/request", function(req, res){
+router.get("/request1", function(req, res){
     send();
 });
 

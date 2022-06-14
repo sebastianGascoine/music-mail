@@ -11,11 +11,15 @@
   </head>
 
   <body>
+    <br>
     <div id="request">
       <input id="requestButton1" type="button" value="RequestDaily" />
       <input id="requestButton2" type="button" value="RequestWeekly" />
       <input id="requestButton3" type="button" value="RequestMonthly" />
     </div>
+    <p id="switch-prompt">Don't have an account? <a href="/signup">Sign up</a></p>
+    <p id="switch-prompt">Already have an account? <a href="/login">Log in</a></p>
+
     <script>
 
       function success(result) {
@@ -23,7 +27,7 @@
 
       function requestClicked1(){
 //send an HTTP get request and get a result back.
-        $.get("/request", success);
+        $.get("/request1", success);
       }
 /*
       function requestClicked2(){
