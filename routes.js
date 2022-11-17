@@ -49,7 +49,7 @@ async function send() {
   let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com'; //replace with db
     const result = await transporter.sendMail({
         from: 'mylesfour20',
-        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, parkat701@gmail.com', //sovietangel5@gmail.com', //sovietangel5 is swag
+        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, parkat701@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
         subject: "Sebastian's Music of The Day",
         html: await readFile('./public/views/emaildaily.html', 'utf8')
     });
