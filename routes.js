@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'mylesfour20',
-        pass: 'ctmyboahcqixociq'
+        pass: 'jhxevqrwrknscfcx'
     }
 });
 /*                                                                                /
@@ -36,6 +36,9 @@ router.get("/",function(req,res) {
 router.get("/daily",function(req,res) {
   res.sendFile(path.resolve(__dirname,"/public/views/emaildaily.html"));
 });
+router.get("/weekly",function(req,res) {
+  res.sendFile(path.resolve(__dirname,"/public/views/emailweekly.html"));
+});
 router.get('/login', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/public/setup/login.html'));
 });
@@ -44,21 +47,35 @@ router.get('/signup', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/public/setup/signup.html'));
 });
 
-async function send() {
+async function send1() {
   let ytlink = '';
   let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com'; //replace with db
     const result = await transporter.sendMail({
         from: 'mylesfour20',
-        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, parkat701@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
+        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, zacharydg333@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
         subject: "Sebastian's Music of The Day",
         html: await readFile('./public/views/emaildaily.html', 'utf8')
     });
 
     console.log(JSON.stringify(result, null, 4));
 }
+async function send2() {
+  let ytlink = '';
+  let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com'; //replace with db
+    const result = await transporter.sendMail({
+        from: 'mylesfour20',
+        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, zacharydg333@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
+        subject: "Sebastian's Music of The Day",
+        html: await readFile('./public/views/emailweekly.html', 'utf8')
+    });
 
+    console.log(JSON.stringify(result, null, 4));
+}
 router.get("/request1", function(req, res){
-    send();
+    send2();
+});
+router.get("/request2", function(req, res){
+    send2();
 });
 
 module.exports = router;
