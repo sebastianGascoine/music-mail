@@ -13,7 +13,7 @@
   <body>
     <br>
     <div id="request">
-      <input id="requestButton1" type="button" value="RequestWeekly" />
+      <input id="requestButton1" type="button" value="RequestDaily" />
       <input id="requestButton2" type="button" value="RequestWeekly" />
       <input id="requestButton3" type="button" value="RequestMonthly" />
     </div>
@@ -27,20 +27,17 @@
 
       function requestClicked1(){
 //send an HTTP get request and get a result back.
-        console.log('heererererere1');
 
-        $.get("/request2", success);
+        $.get("/request1", success);
       }
 
       function requestClicked2(){
-      //send an HTTP get request and get a result back.
-        console.log('heererererere2');
+//send an HTTP get request and get a result back.
         $.get("/request2", success);
       }
 
       function requestClicked3(){
 //send an HTTP get request and get a result back.
-        console.log('heererererere3');
 
         //$.get("/request", success);
       }

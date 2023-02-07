@@ -52,7 +52,7 @@ async function send1() {
   let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com'; //replace with db
     const result = await transporter.sendMail({
         from: 'mylesfour20',
-        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, zacharydg333@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
+        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, zacharydg333@gmail.com, sovietangel5@gmail.com, samjamhamlamb@gmail.com', //sovietangel5 is swag
         subject: "Sebastian's Music of The Day",
         html: await readFile('./public/views/emaildaily.html', 'utf8')
     });
@@ -64,7 +64,7 @@ async function send2() {
   let tolist = 'sebgascoine@gmail.com, sovietangel5@gmail.com'; //replace with db
     const result = await transporter.sendMail({
         from: 'mylesfour20',
-        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, zacharydg333@gmail.com, sovietangel5@gmail.com', //sovietangel5 is swag
+        bcc: 'sebgascoine@gmail.com, GummyMapleSyrupBacon@gmail.com, zacharydg333@gmail.com, sovietangel5@gmail.com,samjamhamlamb@gmail.com', //sovietangel5 is swag
         subject: "Sebastian's Music of The Day",
         html: await readFile('./public/views/emailweekly.html', 'utf8')
     });
@@ -72,7 +72,7 @@ async function send2() {
     console.log(JSON.stringify(result, null, 4));
 }
 router.get("/request1", function(req, res){
-    send2();
+    send1();
 });
 router.get("/request2", function(req, res){
     send2();
