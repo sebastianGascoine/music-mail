@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static('./public'));
 app.use(routes);
 
-const port = 3000;
+const port = 3003;
 app.set('port', process.env.PORT || port);
 
 server.listen(port);
